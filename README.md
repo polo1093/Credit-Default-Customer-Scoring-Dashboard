@@ -21,4 +21,4 @@ Source des données : https://www.kaggle.com/c/home-credit-default-risk/data
 * Utiliser un logiciel de version de code pour assurer l’intégration du modèle
 
 ## Vidéo du dashboard 
-[![Video dashboard](https://img.youtube.com/vi/X8Awv1xasEw/mqdefault.jpg)](https://www.youtube.com/watch?v=X8Awv1xasEw&feature=youtu.be)
+[![Video dashboard](https://img.youtube.com/vi/gStczST6NIQ&t/mqdefault.jpg)](https://www.youtube.com/watch?v=gStczST6NIQ&t=12s&ab_channel=Kombo)
