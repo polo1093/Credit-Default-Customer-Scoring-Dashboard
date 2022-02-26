@@ -36,6 +36,7 @@ path = "./dataframe.csv"#"https://raw.githubusercontent.com/paul-mle/OpenClassro
 df = load_data(path=path)
 
 
+
 @st.cache
 def split_data(df, num_rows):
     X = df.iloc[:, 2:]
@@ -67,37 +68,31 @@ def model_prediction(input):
     return r.json()
 
 
+
+
 def main():
     import hydralit_components as hc
+    
 
     # specify the primary menu definition
     menu_data = [
-            {'icon': "far fa-copy", 'label':"Left End"},
-            {'id':'Copy','icon':"🐙",'label':"Copy"},
-            {'icon': "far fa-chart-bar", 'label':"Chart"},#no tooltip message
-            {'icon': "far fa-address-book", 'label':"Book"},
-            {'id':' Crazy return value 💀','icon': "💀", 'label':"Calendar"},
-            {'icon': "far fa-clone", 'label':"Component"},
-            {'icon': "fas fa-tachometer-alt", 'label':"Dashboard",'ttip':"I'm the Dashboard tooltip!"}, #can add a tooltip message
-            {'icon': "far fa-copy", 'label':"Right End"},
+            {'icon': "far fa-chart-bar", 'label':"Feature Importance"},#no tooltip message
+            {'icon': "fas fa-tachometer-alt", 'label':"Data Analysis",'ttip':"I'm the Dashboard tooltip!"},
+            {'icon': "far fa-address-book", 'label':"Prediction"}, 
     ]
     # we can override any part of the primary colors of the menu
     #over_theme = {'txc_inactive': '#FFFFFF','menu_background':'red','txc_active':'yellow','option_active':'blue'}
     over_theme = {'txc_inactive': '#FFFFFF'}
-    menu_id = hc.nav_bar(menu_definition=menu_data,
-                        home_name='Home',
-                        override_theme=over_theme)
+    page = hc.option_bar(
+            option_definition=menu_data,
+            title='Dashboard',
+            key='PrimaryOption',
+            override_theme=over_theme,
+            horizontal_orientation=True
+        )
+    
 
-        
-    #get the id of the menu item clicked
-    st.info(f"{menu_id=}")
     st.sidebar.header("Parameters:")
-    page = st.sidebar.radio(
-        "Choose an option:",
-        [ "Feature Importance","Data Analysis", "Prediction"],
-        index=0,
-    )
-
     df_analysis = df.copy()
     for col in df_analysis.filter(like="DAYS").columns:
         df_analysis[col] = df_analysis[col].apply(lambda x: abs(x / 365))
@@ -341,7 +336,7 @@ def main():
             #true_value = y_test.iloc[id_idx]
             if pred == 0:
                 st.success("Loan granted 🙂 (refund probability = {}%)".format(proba))
-                st.balloons()
+                
             else:
                 st.error("Loan not granted 😞 (default probability = {}%)".format(proba))
 
@@ -375,11 +370,13 @@ def main():
 
     elif page == "Feature Importance":
         st.title("Feature importance for prediction")
-        n_features = st.sidebar.selectbox(
-        "Select number of features:",
-        range(5,43,3),
-        index=2
-        )
+        n_features = st.sidebar.slider(
+            "Select number of features:",
+            value=7,
+            min_value=5,
+            max_value=50,
+            step=2
+            )
         summary_plot, _ = plt.subplots(2,1)
         ax1 = plt.subplot(121)
         shap.summary_plot(
