@@ -3,6 +3,7 @@ import git
 import pickle
 import pandas as pd
 from flask import Flask, request, jsonify
+from flask.templating import render_template
 
 # Init Flask app
 #app = Flask(__name__)
@@ -44,18 +45,6 @@ def predict():
         pred = classifier.predict(client_input)[0]
         proba = classifier.predict_proba(client_input)[0][pred]
         return jsonify(prediction=int(pred), probability=round(100 * proba, 1))
-
-from flask import Flask
-from flask.templating import render_template
-
-
-
-
-@app.route('/')
-def index():
-    return render_template('index.html', name='home')
-
-
 
 
 if __name__ == '__main__':
