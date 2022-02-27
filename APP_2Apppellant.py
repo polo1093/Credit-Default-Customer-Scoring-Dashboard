@@ -20,6 +20,8 @@ shap.initjs()
 def run_api():
     subprocess.Popen([sys.executable, 'app.py'])
 
+run_api()
+
 @st.cache
 def deserialization():
     my_directory = os.path.dirname(__file__)
@@ -68,8 +70,7 @@ X_test, y_test, ids = split_data(df=df, num_rows=1000)
 
 @st.cache(allow_output_mutation=True)
 def model_prediction(input):
-    url = "http://127.0.0.1:5000/predict" # local
-    #url = 'http://giteub.com/predict'
+    url = "http://127.0.0.1:5000/predict" 
     r = requests.post(url, json=input, timeout=120)
     return r.json()["prediction"],r.json()["probability"]
 
