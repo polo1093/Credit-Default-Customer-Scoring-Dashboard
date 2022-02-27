@@ -291,6 +291,8 @@ def main():
         plt.xlabel("")
         st.pyplot(summary_plot)
 
+    st.markdown('GitHub repository : [https://github.com/polo1093/P7_openclassroom]'
+            '(https://github.com/polo1093/P7_openclassroom)')
 
 if __name__ == "__main__":
     main()
