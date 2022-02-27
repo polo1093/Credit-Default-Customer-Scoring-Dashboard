@@ -5,6 +5,7 @@ import pandas as pd
 from flask import Flask, request, jsonify
 
 # Init Flask app
+#app = Flask(__name__)
 app = Flask(__name__)
 
 # Load model objects
@@ -12,6 +13,7 @@ my_directory = os.path.dirname(__file__)
 pickle_model_objects_path = os.path.join(my_directory, "model_objects.pkl")
 with open(pickle_model_objects_path, "rb") as handle:
     transformer, classifier = pickle.load(handle)
+
 
 @app.route('/git_update', methods=['POST'])
 def git_update():
@@ -24,9 +26,7 @@ def git_update():
     else:
         return '', 400
 
-@app.route("/")
-def hello():
-    return "Machine learning API"
+
 
 @app.route("/predict", methods=["POST","GET"])
 def predict():
@@ -44,6 +44,19 @@ def predict():
         pred = classifier.predict(client_input)[0]
         proba = classifier.predict_proba(client_input)[0][pred]
         return jsonify(prediction=int(pred), probability=round(100 * proba, 1))
+
+from flask import Flask
+from flask.templating import render_template
+
+
+
+
+@app.route('/')
+def index():
+    return render_template('index.html', name='home')
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
