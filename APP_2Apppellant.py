@@ -18,7 +18,7 @@ shap.initjs()
 
 @st.cache
 def run_api():
-    subprocess.Popen([sys.executable, 'app.py'])
+    subprocess.Popen([sys.executable, 'api.py'])
 
 run_api()
 
