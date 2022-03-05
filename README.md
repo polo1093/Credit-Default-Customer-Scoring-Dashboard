@@ -1,3 +1,5 @@
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/antoine-mle/openclassrooms-p7/main/app.py/)
+
 # Projet7-Openclassrooms
 Parcours Data Science
 
