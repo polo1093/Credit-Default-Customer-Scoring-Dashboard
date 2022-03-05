@@ -83,7 +83,7 @@ def main():
             {'icon': "far fa-chart-bar", 'label':"Feature Importance"},#no tooltip message
             {'icon': "fas fa-tachometer-alt", 'label':"Data Analysis",'ttip':"I'm the Dashboard tooltip!"},
             {'icon': "far fa-address-book", 'label':"Prediction"}, 
-            {'label':"New client"}
+            {'icon': "fas fa-folder-plus",'label':"New client"}
     ]
     # we can override any part of the primary colors of the menu
     #over_theme = {'txc_inactive': '#FFFFFF','menu_background':'red','txc_active':'yellow','option_active':'blue'}
@@ -204,10 +204,9 @@ def main():
             else:
                 st.warning("Please select at least 1 feature")
 
-
     elif page == "Prediction":
         sorted_ids = sorted(ids)
-        client_id = st.sidebar.selectbox(
+        client_id = st.selectbox(
             "Select a client ID:",
             sorted_ids,
         )
@@ -225,17 +224,20 @@ def main():
                 st.success("Loan granted (refund probability = {}%)".format(proba)) 
             else:
                 st.error("Loan not granted (default probability = {}%)".format(proba))
-
+            
             st.expander("Show feature impact:")
+            force_plot, ax = plt.subplots()
             force_plot = shap.force_plot(
                 base_value=explainer.expected_value[pred],
                 shap_values=explainer.shap_values[pred][id_idx],
                 features=features[id_idx],
+                plot_cmap=["#00e800","#ff2839"],
                 feature_names=feature_names,
                 matplotlib=True,
                 show=False,
+                
             )
-            st.pyplot(force_plot)
+            st.write(force_plot)
 
             decision_plot, ax = plt.subplots()
             ax = shap.decision_plot(
@@ -243,6 +245,7 @@ def main():
                 shap_values=explainer.shap_values[pred][id_idx],
                 features=features[id_idx],
                 feature_names=feature_names,
+                link='logit',
             )
             st.pyplot(decision_plot)
 
@@ -256,7 +259,7 @@ def main():
 
     elif page == "Feature Importance":
         st.title("Feature importance for prediction")
-        n_features = st.sidebar.slider(
+        n_features = st.slider(
             "Select number of features:",
             value=7,
             min_value=5,
@@ -292,6 +295,40 @@ def main():
         plt.xlabel("")
         st.pyplot(summary_plot)
 
+    elif page == "New client":
+        client_median = X_test.iloc[[1],:]
+        #st.write(client_median)
+        # Giving a title 
+        st.title('Simulation')
+        # creating a form
+        my_form=st.form(key='form-1')
+        # creating input fields
+        client_median['AMT_CREDIT']=my_form.text_input('Loan credit:',"20000")
+        client_median['AMT_GOODS_PRICE']=my_form.text_input('Previous credit:',"2200200")
+        client_median['AMT_ANNUITY']=my_form.text_input('AMT annuity:',"2000")
+        client_median['AMT_INCOME_TOTAL']=my_form.text_input('Income total:',"20002")
+        # creating radio button 
+        my_form.radio('Gender',('M','F'))
+        # creating slider 
+        my_form.slider('Age:',1,120,25)
+
+        submit=my_form.form_submit_button('Submit')
+        if submit:
+            client_input_json = json.loads(client_median.to_json())
+            pred, proba= model_prediction(client_input_json)
+            if pred == 0:
+                st.success("Loan granted (refund probability = {}%)".format(proba)) 
+            else:
+                st.error("Loan not granted (default probability = {}%)".format(proba))
+        
+        with st.expander("Show client information:"):
+            df_client_input = pd.DataFrame(
+                client_median.to_numpy(),
+                index=["Information"],
+                columns=client_median.columns,
+            ).astype(str).transpose()
+            st.dataframe(df_client_input)
+        
     st.markdown('GitHub repository : [https://github.com/polo1093/P7_openclassroom]'
             '(https://github.com/polo1093/P7_openclassroom)')
 
