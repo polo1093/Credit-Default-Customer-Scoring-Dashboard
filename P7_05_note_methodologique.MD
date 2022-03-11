@@ -1,6 +1,6 @@
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/antoine-mle/openclassrooms-p7/main/app.py/)
 
-# **Une note méthodologique**
+# **Note méthodologique**
 
 ## **0. Contexte**
 
@@ -65,9 +65,9 @@ Pour cela, j'ai testé **SMOTE** un algorithme pour ajouter des clients afin d'�
 ### **2.3 La métrique d'évaluation**
 Comme vus plus haut, c'est le score AUC (ou Area Under the Curve) qui a été retenu. Car il prend en compte les faux négatifs ce qu'on veut réduire au maximum du résonnable.
 <p align="center" width="100%">
-<img src="https://cdn.discordapp.com/attachments/949493355354677278/951817873549033502/unknown.png" width="500"  /></p>
+<img src="https://cdn.discordapp.com/attachments/949493355354677278/951817873549033502/unknown.png" width="800"  /></p>
 
-Comme l'on peut voir, ca diminue la précision au profit du recall
+Comme l'on peut voir, ca diminue la précision au profit du recall.
 <br /> 
 
 ## **3. L’interprétabilité globale et locale du modèle**
@@ -84,7 +84,7 @@ Mais en utilisant la bibliothèque SHAP, on peut avoir ce graphique à la fois a
 
  mais aussi au **niveau locale** : pour un client.
 <p align="center" width="100%">
-<img src="https://cdn.discordapp.com/attachments/949493355354677278/950776603632365588/unknown.png" width="500"/></p>
+<img src="https://cdn.discordapp.com/attachments/949493355354677278/950776603632365588/unknown.png" width="800"/></p>
 <br /> 
 
 ## **4. Les limites et les améliorations possibles**
