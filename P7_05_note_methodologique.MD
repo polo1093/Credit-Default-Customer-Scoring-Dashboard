@@ -74,7 +74,7 @@ Comme l'on peut voir, ca diminue la précision au profit du recall
 
 Le classifieur LGBM possède dans sa bibliothèque la méthode ‘feature_importances_’.
 
-En appliquant cette méthode aux jeux de données processé, on obtient le poids de chaque variable dans le calcul du score de probabilité de classe. Le graphique ci-dessous indique par ordre décroissant d’importance les premières variables les plus importantes :
+En appliquant cette méthode aux jeux de données processées, on obtient le poids de chaque variable dans le calcul du score de probabilité de classe. Le graphique ci-dessous indique par ordre décroissant d’importance les premières variables les plus importantes :
 <p align="center" width="100%">
 <img src="https://cdn.discordapp.com/attachments/949493355354677278/950775394922016768/unknown.png" width="500"/></p>
 
