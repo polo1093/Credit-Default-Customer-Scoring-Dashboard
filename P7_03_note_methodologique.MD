@@ -1,4 +1,4 @@
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/antoine-mle/openclassrooms-p7/main/app.py/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/polo1093/p7_openclassroom/main/api_Steamlit.py)
 
 # **Note méthodologique**
 
@@ -14,7 +14,7 @@ Le projet consiste à développer pour [la société « Prêt à Dépenser »](h
 
 Le modèle entraîné dans le cadre de ce projet a été entraîné sur la base du jeu de données après analyse exploratoire et création de nouvelles features. Avec la reprise **de deux notebooks**  consultable sur le site
 Kaggle.
-* [Start Here: A Gentle Introduction](https://www.kaggle.com/willkoehrsen/start-here-a-gentle-introduction#Exploratory-Data-Analysis)
+* [Start Here: A Gentle Introduction](https://www.kaggle.com/jsaguiar/lightgbm-with-simple-features)
 * [Tuning Automated Feature Engineering (Exploratory)](https://www.kaggle.com/willkoehrsen/tuning-automated-feature-engineering-exploratory)
 
 Aprés avoir **fusionné leurs features ingenering**, j'ai confirmé leur hyperparamètre. Polur cela, le jeu de données initial a été séparé en plusieurs parties de façon à disposer :
@@ -88,7 +88,7 @@ Mais en utilisant la bibliothèque SHAP, on peut avoir ce graphique à la fois a
 <br /> 
 
 ## **4. Les limites et les améliorations possibles**
-### **4.1 Lenteur du modéle**
+### **4.1 Lenteur du modèle**
 
 Le score AUC obtenu après la fusion des deux notebooks, est de 0,788 contre 0.786 pour le meilleur des deux. Malgré cela, le nombre de features a presque doublé, rendant les pipelines plus complexes et doublant le temps de formation des modèles.
 

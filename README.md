@@ -24,7 +24,7 @@ fichier joint au projet : [Note méthodologique](https://github.com/polo1093/P7_
 
 ## Adresse du dashboard
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/polo1093/p7_openclassroom/main/APP_2Apppellant.py)https://share.streamlit.io/polo1093/p7_openclassroom/main/APP_2Apppellant.py
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/polo1093/p7_openclassroom/main/api_Steamlit.py)https://share.streamlit.io/polo1093/p7_openclassroom/main/api_Steamlit.py
 
 ## Vidéo du dashboard 
 https://www.youtube.com/watch?v=9pE0FB8T7qE
