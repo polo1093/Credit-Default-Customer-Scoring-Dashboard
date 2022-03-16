@@ -31,3 +31,7 @@ https://www.youtube.com/watch?v=9pE0FB8T7qE
 <p align="center" width="100%">
 <a href="https://www.youtube.com/watch?v=9pE0FB8T7qE">
 <img  src="https://cdn.discordapp.com/attachments/949493355354677278/949493379409018920/unknown.png" width="200"/></a></p>
+
+## Organisation des fichiers
+<p align="center" width="100%">
+<img  src="https://cdn.discordapp.com/attachments/949493355354677278/952147096897732658/unknown.png" width="600"/></p>
